@@ -1,24 +1,48 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { Ecosystem } from "@/components/site/Ecosystem";
+import { Mentor } from "@/components/site/Mentor";
+import { DuplicationSystem } from "@/components/site/DuplicationSystem";
+import { IncomeCalculator } from "@/components/site/IncomeCalculator";
+import { Funnel } from "@/components/site/Funnel";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { BookingModal } from "@/components/site/BookingModal";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Atomy Global Engine — Build $1,000+ Residual Income";
+const DESCRIPTION =
+  "A global duplication system on the Atomy ecosystem: 60K PV + 2 partners a month, mentored by Galina Nikolaeva. Book a free 30-minute strategy call.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [booking, setBooking] = useState(false);
+  const openBooking = () => setBooking(true);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen scroll-smooth">
+      <Navbar onBook={openBooking} />
+      <main>
+        <Hero onBook={openBooking} />
+        <Ecosystem />
+        <Mentor onBook={openBooking} />
+        <DuplicationSystem onBook={openBooking} />
+        <IncomeCalculator onBook={openBooking} />
+        <Funnel onBook={openBooking} />
+      </main>
+      <SiteFooter onBook={openBooking} />
+      <BookingModal open={booking} onOpenChange={setBooking} />
     </div>
   );
 }
