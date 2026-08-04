@@ -131,7 +131,7 @@ function Control({
         max={max}
         step={step}
         value={[current]}
-        onValueChange={(v) => onChange(v[0])}
+        onValueChange={(v) => onChange(v[0] ?? current)}
         aria-label={label}
       />
     </div>
