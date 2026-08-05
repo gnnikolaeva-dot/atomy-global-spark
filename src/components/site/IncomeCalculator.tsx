@@ -23,18 +23,18 @@ export function IncomeCalculator({ onBook }: { onBook: () => void }) {
     <section id="calculator" className="relative py-22 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <p className="text-primary text-xs font-bold tracking-[0.2em] uppercase">
-          The math, not the hype
+          Математика, а не обещания
         </p>
         <h2 className="mt-4 max-w-2xl text-3xl font-extrabold lg:text-4xl">
-          Interactive income &amp;{" "}
-          <span className="text-gradient">duplication calculator</span>
+          Интерактивный калькулятор{" "}
+          <span className="text-gradient">дохода и дупликации</span>
         </h2>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-5">
           <div className="glass rounded-3xl p-7 lg:col-span-3">
             <div className="grid gap-9">
               <Control
-                label="Active partners sponsored per month"
+                label="Активных партнёров в месяц"
                 value={`${partners}`}
                 min={1}
                 max={4}
@@ -43,8 +43,8 @@ export function IncomeCalculator({ onBook }: { onBook: () => void }) {
                 onChange={setPartners}
               />
               <Control
-                label="Timeline"
-                value={`${months} months`}
+                label="Горизонт планирования"
+                value={`${months} мес.`}
                 min={3}
                 max={12}
                 step={1}
@@ -52,7 +52,7 @@ export function IncomeCalculator({ onBook }: { onBook: () => void }) {
                 onChange={setMonths}
               />
               <Control
-                label="Personal monthly volume"
+                label="Личный объём в месяц"
                 value={`${formatRub(pv)} PV`}
                 min={10000}
                 max={120000}
@@ -67,32 +67,32 @@ export function IncomeCalculator({ onBook }: { onBook: () => void }) {
             <div className="from-primary/20 absolute -top-24 -right-16 size-64 rounded-full bg-gradient-to-br to-transparent blur-2xl" />
             <div className="relative">
               <div className="text-muted-foreground flex items-center gap-2 text-xs font-bold tracking-wider uppercase">
-                <CalcIcon className="size-4" /> Projection
+                <CalcIcon className="size-4" /> Прогноз
               </div>
               <div className="mt-6">
                 <div className="text-muted-foreground text-xs">
-                  Projected monthly income
+                  Прогнозируемый доход в месяц
                 </div>
                 <div className="text-emerald mt-1 text-4xl font-extrabold tabular-nums">
                   {formatRub(result.income)} ₽
                 </div>
                 <div className="text-muted-foreground mt-1 text-xs">
-                  ≈ ${formatRub(result.income / 91)} / month
+                  ≈ {formatRub(result.income * 12)} ₽ в год
                 </div>
               </div>
 
               <dl className="mt-7 grid gap-3">
-                <Row label="Structure size" value={`${formatRub(result.structure)} partners`} />
-                <Row label="Group volume" value={`${formatRub(result.volume)} PV`} />
-                <Row label="Binary steps reached" value={`Step ${result.steps}`} />
+                <Row label="Размер структуры" value={`${formatRub(result.structure)} партнёров`} />
+                <Row label="Групповой объём" value={`${formatRub(result.volume)} PV`} />
+                <Row label="Достигнутая ступень" value={`Ступень ${result.steps}`} />
               </dl>
 
               <Button variant="cta" className="mt-7 w-full" onClick={onBook}>
-                Validate these numbers with a mentor <ArrowRight />
+                Проверить цифры с наставником <ArrowRight />
               </Button>
               <p className="text-muted-foreground mt-3 text-[11px] leading-relaxed">
-                Projections are illustrative and depend on consistency. They are not a
-                guarantee of earnings.
+                Расчёты носят иллюстративный характер и зависят от вашей регулярности.
+                Это не гарантия дохода.
               </p>
             </div>
           </div>

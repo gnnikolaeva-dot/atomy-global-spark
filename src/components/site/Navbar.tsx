@@ -55,7 +55,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             variant="glass"
             size="icon"
             className="lg:hidden"
-            aria-label="Toggle navigation"
+            aria-label="Открыть меню"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X /> : <Menu />}

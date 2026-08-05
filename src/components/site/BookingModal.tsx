@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CalendarCheck, Clock, Loader2 } from "lucide-react";
 import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 import {
   Dialog,
   DialogContent,
@@ -35,7 +36,7 @@ export function BookingModal({
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     if (!name || !email || !date) {
-      toast.error("Please add your name, email and a preferred date.");
+      toast.error("Укажите имя, email и удобную дату.");
       return;
     }
     setSending(true);
@@ -43,7 +44,7 @@ export function BookingModal({
       setSending(false);
       onOpenChange(false);
       toast.success(
-        `Request sent — ${format(date, "EEE, d MMM")} at ${slot}. Galina's team will confirm by email.`,
+        `Заявка отправлена — ${format(date, "EEE, d MMM", { locale: ru })}, ${slot}. Команда Галины подтвердит время по email.`,
       );
     }, 900);
   };
@@ -53,22 +54,22 @@ export function BookingModal({
       <DialogContent className="glass max-h-[92vh] overflow-y-auto sm:max-w-3xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-extrabold">
-            Book your 30-Minute Strategy Call
+            Запись на 30-минутный стратегический звонок
           </DialogTitle>
           <DialogDescription>
-            One-on-one video call with Galina Nikolaeva. Pick a date and time that works
-            for you.
+            Личный видеозвонок с Галиной Николаевой. Выберите удобные дату и время.
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={submit} className="mt-2 grid gap-6 md:grid-cols-2">
           <div>
             <Label className="text-xs font-bold tracking-wider uppercase">
-              Select a date
+              Выберите дату
             </Label>
             <div className="bg-surface/70 mt-3 rounded-2xl border p-1">
               <Calendar
                 mode="single"
+                locale={ru}
                 selected={date}
                 onSelect={setDate}
                 disabled={{ before: new Date() }}
@@ -77,7 +78,7 @@ export function BookingModal({
             </div>
             <div className="mt-4">
               <Label className="text-xs font-bold tracking-wider uppercase">
-                Available time
+                Свободное время
               </Label>
               <div className="mt-3 grid grid-cols-3 gap-2">
                 {SLOTS.map((s) => (
@@ -101,8 +102,8 @@ export function BookingModal({
 
           <div className="grid content-start gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="name">Full name</Label>
-              <Input id="name" name="name" maxLength={100} placeholder="Alex Morgan" required />
+              <Label htmlFor="name">Имя и фамилия</Label>
+              <Input id="name" name="name" maxLength={100} placeholder="Анна Смирнова" required />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -111,36 +112,36 @@ export function BookingModal({
                 name="email"
                 type="email"
                 maxLength={255}
-                placeholder="alex@company.com"
+                placeholder="anna@company.com"
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="country">Country / city</Label>
-              <Input id="country" name="country" maxLength={100} placeholder="Berlin, Germany" />
+              <Label htmlFor="country">Страна / город</Label>
+              <Input id="country" name="country" maxLength={100} placeholder="Москва, Россия" />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="goal">Your income goal</Label>
+              <Label htmlFor="goal">Ваша цель по доходу</Label>
               <Textarea
                 id="goal"
                 name="goal"
                 maxLength={600}
                 rows={4}
-                placeholder="I want $1,000+ residual income within 6 months while keeping my job."
+                placeholder="Хочу 90 000 ₽ остаточного дохода за 6 месяцев, не оставляя работу."
               />
             </div>
 
             <div className="bg-surface-2/60 flex items-center gap-3 rounded-xl border p-3">
               <CalendarCheck className="text-emerald size-5 shrink-0" />
               <p className="text-muted-foreground text-xs">
-                {date ? format(date, "EEEE, d MMMM yyyy") : "No date selected"} · {slot} ·
-                30 min video call
+                {date ? format(date, "EEEE, d MMMM yyyy", { locale: ru }) : "Дата не выбрана"} ·{" "}
+                {slot} · видеозвонок 30 минут
               </p>
             </div>
 
             <Button type="submit" variant="cta" size="xl" disabled={sending}>
               {sending ? <Loader2 className="animate-spin" /> : null}
-              Confirm my strategy call
+              Подтвердить запись
             </Button>
           </div>
         </form>
