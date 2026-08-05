@@ -10,9 +10,10 @@ import { Funnel } from "@/components/site/Funnel";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { BookingModal } from "@/components/site/BookingModal";
 
-const TITLE = "Atomy Global Engine — Build $1,000+ Residual Income";
+const TITLE = "Atomy Global Engine — доход 91 000 ₽ в месяц";
 const DESCRIPTION =
-  "A global duplication system on the Atomy ecosystem: 60K PV + 2 partners a month, mentored by Galina Nikolaeva. Book a free 30-minute strategy call.";
+  "Глобальная система дупликации на экосистеме Atomy: 60 000 PV и 2 партнёра в месяц под наставничеством Галины Николаевой. Бесплатный 30-минутный стратегический звонок.";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
