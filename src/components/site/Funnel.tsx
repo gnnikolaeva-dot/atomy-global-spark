@@ -4,21 +4,21 @@ import { Button } from "@/components/ui/button";
 const STEPS = [
   {
     icon: Video,
-    step: "Step 1",
-    title: "30-minute video call",
-    copy: "A focused conversation with Galina: your goals, your time, your market. No pressure, no group webinar.",
+    step: "Шаг 1",
+    title: "30-минутный видеозвонок",
+    copy: "Предметный разговор с Галиной: ваши цели, ваше время, ваш рынок. Без давления и без общих вебинаров.",
   },
   {
     icon: Map,
-    step: "Step 2",
-    title: "Personalized roadmap",
-    copy: "You leave with a written plan: your PV routine, your first-partner list and a weekly rhythm.",
+    step: "Шаг 2",
+    title: "Персональная дорожная карта",
+    copy: "Вы уходите с письменным планом: ваш объём PV, список первых партнёров и недельный ритм.",
   },
   {
     icon: Rocket,
-    step: "Step 3",
-    title: "System activation · 10K PV start",
-    copy: "Free registration, a 10 000 PV starting order, and you're inside the duplication engine.",
+    step: "Шаг 3",
+    title: "Активация системы · старт с 10К PV",
+    copy: "Бесплатная регистрация, стартовый заказ на 10 000 PV — и вы внутри системы дупликации.",
   },
 ];
 
@@ -28,10 +28,10 @@ export function Funnel({ onBook }: { onBook: () => void }) {
       <div className="grid-backdrop absolute inset-0 opacity-40" />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <p className="text-emerald text-xs font-bold tracking-[0.2em] uppercase">
-          Consultation funnel
+          Воронка консультации
         </p>
         <h2 className="mt-4 max-w-2xl text-3xl font-extrabold lg:text-4xl">
-          From curious to <span className="text-gradient">activated</span> in three steps
+          От интереса до <span className="text-gradient">активации</span> в три шага
         </h2>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -54,13 +54,13 @@ export function Funnel({ onBook }: { onBook: () => void }) {
 
         <div className="glass mt-6 flex flex-col items-center gap-5 rounded-3xl p-9 text-center">
           <h3 className="max-w-xl text-2xl font-extrabold">
-            Your next 6 months start with one 30-minute call
+            Ваши следующие 6 месяцев начинаются с одного 30-минутного звонка
           </h3>
           <p className="text-muted-foreground max-w-lg text-sm">
-            Limited slots each week — Galina personally runs every strategy call.
+            Мест в неделю ограниченно — Галина проводит каждый стратегический звонок лично.
           </p>
           <Button variant="cta" size="xl" onClick={onBook}>
-            Book 30-Min Strategy Call <ArrowRight />
+            Записаться на 30-мин. звонок <ArrowRight />
           </Button>
         </div>
       </div>

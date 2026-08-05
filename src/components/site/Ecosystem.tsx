@@ -4,26 +4,26 @@ const STATS = [
   {
     icon: Building2,
     value: "2009",
-    label: "Founded in South Korea",
-    copy: "Manufacturing-backed, debt-free growth since day one.",
+    label: "Основана в Южной Корее",
+    copy: "Собственное производство и рост без долгов с первого дня.",
   },
   {
     icon: Award,
-    value: "Top 10",
-    label: "Global direct selling enterprise",
-    copy: "Ranked among the largest network businesses worldwide.",
+    value: "Топ-10",
+    label: "Мировых компаний прямых продаж",
+    copy: "Один из крупнейших сетевых бизнесов в мире.",
   },
   {
     icon: Globe2,
     value: "170+",
-    label: "Countries & territories",
-    copy: "One global ID — your structure crosses borders with you.",
+    label: "Стран и территорий",
+    copy: "Один глобальный ID — ваша структура пересекает границы вместе с вами.",
   },
   {
     icon: ShieldCheck,
     value: "A+A-",
-    label: "Absolute quality, absolute price",
-    copy: "The philosophy that keeps repeat orders — and residuals — stable.",
+    label: "Абсолютное качество, абсолютная цена",
+    copy: "Философия, которая держит повторные заказы — и остаточный доход — стабильными.",
   },
 ];
 
@@ -33,16 +33,16 @@ export function Ecosystem() {
       <div className="grid-backdrop absolute inset-0 opacity-40" />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <p className="text-primary text-xs font-bold tracking-[0.2em] uppercase">
-          Global company ecosystem
+          Глобальная экосистема компании
         </p>
         <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-2xl text-3xl font-extrabold lg:text-4xl">
-            You don't build on hope. You build on{" "}
-            <span className="text-gradient">real infrastructure.</span>
+            Вы строите не на надежде. Вы строите на{" "}
+            <span className="text-gradient">реальной инфраструктуре.</span>
           </h2>
           <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
-            Logistics, manufacturing, compliance and payouts are already solved.
-            Your only job is duplication — the part the mentorship covers.
+            Логистика, производство, юридические вопросы и выплаты уже решены.
+            Ваша задача — только дупликация, и именно её закрывает наставничество.
           </p>
         </div>
 

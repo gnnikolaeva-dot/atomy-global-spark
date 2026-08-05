@@ -17,13 +17,13 @@ export function SiteFooter({ onBook }: { onBook: () => void }) {
               </span>
             </div>
             <p className="text-muted-foreground mt-4 max-w-xs text-xs leading-relaxed">
-              An independent partner platform built on the Atomy ecosystem. Mentorship
-              and duplication framework by Galina Nikolaeva.
+              Независимая партнёрская платформа на базе экосистемы Atomy.
+              Наставничество и система дупликации — Галина Николаева.
             </p>
           </div>
 
           <div>
-            <div className="text-xs font-bold tracking-wider uppercase">Sections</div>
+            <div className="text-xs font-bold tracking-wider uppercase">Разделы</div>
             <ul className="mt-4 grid gap-2">
               {NAV_LINKS.map((l) => (
                 <li key={l.id}>
@@ -39,24 +39,24 @@ export function SiteFooter({ onBook }: { onBook: () => void }) {
           </div>
 
           <div>
-            <div className="text-xs font-bold tracking-wider uppercase">Get in touch</div>
+            <div className="text-xs font-bold tracking-wider uppercase">Связаться</div>
             <div className="text-muted-foreground mt-4 grid gap-3 text-sm">
               <span className="flex items-center gap-2">
                 <Mail className="size-4" /> mentor@atomyglobalengine.com
               </span>
               <span className="flex items-center gap-2">
-                <MessageCircle className="size-4" /> Direct messenger after booking
+                <MessageCircle className="size-4" /> Личный мессенджер после записи
               </span>
             </div>
             <Button variant="cta" className="mt-5 w-full" onClick={onBook}>
-              Book 30-Min Strategy Call
+              Записаться на 30-мин. звонок
             </Button>
           </div>
         </div>
 
         <p className="text-muted-foreground mt-8 text-center text-xs">
-          © {new Date().getFullYear()} Atomy Global Engine. Income examples are
-          illustrative and not a guarantee of earnings.
+          © {new Date().getFullYear()} Atomy Global Engine. Примеры дохода
+          иллюстративны и не являются гарантией заработка.
         </p>
       </div>
     </footer>

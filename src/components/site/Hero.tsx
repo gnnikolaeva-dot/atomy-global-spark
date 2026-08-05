@@ -34,7 +34,7 @@ export function Hero({ onBook }: { onBook: () => void }) {
     <section id="top" className="relative overflow-hidden pt-34 pb-20 lg:pt-42 lg:pb-28">
       <img
         src={heroNetwork}
-        alt="Global partner network visualisation"
+        alt="Визуализация глобальной партнёрской сети"
         width={1600}
         height={1008}
         className="pointer-events-none absolute top-0 right-0 h-full w-full object-cover opacity-35 lg:w-[62%]"
@@ -45,28 +45,28 @@ export function Hero({ onBook }: { onBook: () => void }) {
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <div className="glass inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide">
           <span className="bg-emerald animate-pulse-dot size-2 rounded-full" />
-          Global Business System
-          <span className="text-muted-foreground">· 170+ countries</span>
+          Глобальная бизнес-система
+          <span className="text-muted-foreground">· 170+ стран</span>
         </div>
 
         <h1 className="mt-7 max-w-3xl text-4xl leading-[1.05] font-extrabold sm:text-5xl lg:text-6xl">
-          <span className="text-gradient">Build residual income</span> on the
-          infrastructure of a top-10 global company
+          <span className="text-gradient">Постройте остаточный доход</span> на
+          инфраструктуре компании из топ-10 мира
         </h1>
 
         <p className="text-muted-foreground mt-6 max-w-xl text-base leading-relaxed lg:text-lg">
-          A duplication engine for people done with the 9-to-5 trade-off. Two
-          measurable monthly actions, one mentor, and a system that compounds
-          across borders — not another hustle.
+          Система дупликации для тех, кто устал от работы с 9 до 18. Два измеримых
+          действия в месяц, один наставник и структура, которая растёт по всему
+          миру — а не очередная подработка.
         </p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
           <Button variant="cta" size="xl" onClick={onBook}>
-            Book 30-Min Strategy Call <ArrowRight />
+            Записаться на 30-мин. звонок <ArrowRight />
           </Button>
           <Button variant="glass" size="xl" asChild>
             <a href="#system">
-              <PlayCircle /> See how the system works
+              <PlayCircle /> Как работает система
             </a>
           </Button>
         </div>
@@ -74,33 +74,33 @@ export function Hero({ onBook }: { onBook: () => void }) {
         <div className="mt-14 grid max-w-3xl gap-4 sm:grid-cols-3">
           <div className="glass rounded-2xl p-5">
             <div className="text-muted-foreground flex items-center gap-2 text-xs font-semibold tracking-wider uppercase">
-              <TrendingUp className="size-3.5" /> Month 6 target
+              <TrendingUp className="size-3.5" /> Цель 6-го месяца
             </div>
             <div className="mt-2 text-2xl font-extrabold tabular-nums">
-              {formatRub(earnings)} <span className="text-primary text-base">RUB</span>
+              {formatRub(earnings)} <span className="text-primary text-base">₽</span>
             </div>
             <div className="text-muted-foreground mt-1 text-xs">
-              ≈ $1,000+ monthly residual
+              остаточный доход каждый месяц
             </div>
           </div>
           <div className="glass rounded-2xl p-5">
             <div className="text-muted-foreground flex items-center gap-2 text-xs font-semibold tracking-wider uppercase">
-              <Users className="size-3.5" /> Live social proof
+              <Users className="size-3.5" /> Живое подтверждение
             </div>
             <div className="mt-2 text-2xl font-extrabold tabular-nums">
-              {partners.toLocaleString("en-US")}
+              {partners.toLocaleString("ru-RU")}
             </div>
             <div className="text-emerald mt-1 text-xs">
-              partners onboarded through this framework
+              партнёров стартовали по этой системе
             </div>
           </div>
           <div className="glass rounded-2xl p-5">
             <div className="text-muted-foreground flex items-center gap-2 text-xs font-semibold tracking-wider uppercase">
-              <Globe2 className="size-3.5" /> Entry cost
+              <Globe2 className="size-3.5" /> Стоимость входа
             </div>
-            <div className="mt-2 text-2xl font-extrabold">$0</div>
+            <div className="mt-2 text-2xl font-extrabold">0 ₽</div>
             <div className="text-muted-foreground mt-1 text-xs">
-              free registration · no franchise fee
+              бесплатная регистрация · без паушальных взносов
             </div>
           </div>
         </div>
