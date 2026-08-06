@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Calculator as CalcIcon } from "lucide-react";
+import { ArrowRight, Calculator as CalcIcon, HelpCircle } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { formatRub } from "./data";
 
 export function IncomeCalculator({ onBook }: { onBook: () => void }) {
@@ -95,6 +96,55 @@ export function IncomeCalculator({ onBook }: { onBook: () => void }) {
                 Это не гарантия дохода.
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-16 lg:mt-24">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center">
+              <HelpCircle className="size-5 text-primary" />
+            </div>
+            <h3 className="text-xl font-bold">Часто задаваемые вопросы</h3>
+          </div>
+          
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              <AccordionItem value="item-1" className="glass border-none rounded-2xl px-6">
+                <AccordionTrigger className="hover:no-underline text-base py-5">
+                  Нужен ли стартовый капитал?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5">
+                  Нет, регистрация в системе бесплатна. Вы платите только за товары, которые решите приобрести для личного пользования. Никаких обязательных закупок или членских взносов.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2" className="glass border-none rounded-2xl px-6">
+                <AccordionTrigger className="hover:no-underline text-base py-5">
+                  Сколько времени нужно уделять?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5">
+                  Система гибкая. Для старта достаточно 1-2 часов в день. Главное — регулярность и следование проверенной стратегии дупликации, которую мы предоставим.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              <AccordionItem value="item-3" className="glass border-none rounded-2xl px-6">
+                <AccordionTrigger className="hover:no-underline text-base py-5">
+                  Как быстро я получу первый доход?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5">
+                  Это зависит от вашей активности. При следовании модели 60K PV и привлечении двух активных партнёров, первые выплаты можно увидеть уже в первый месяц работы.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4" className="glass border-none rounded-2xl px-6">
+                <AccordionTrigger className="hover:no-underline text-base py-5">
+                  Что если у меня нет опыта в продажах?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5">
+                  Нам не нужны продавцы, нам нужны партнёры. Система построена на личном потреблении качественного продукта и рекомендации бизнес-модели. Всему остальному мы научим.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>
