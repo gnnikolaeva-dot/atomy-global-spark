@@ -12,7 +12,7 @@ import { BookingModal } from "@/components/site/BookingModal";
 
 const TITLE = "Atomy Global Engine — доход 91 000 ₽ в месяц";
 const DESCRIPTION =
-  "Глобальная система дупликации на экосистеме Atomy: 60 000 PV и 2 партнёра в месяц под наставничеством Галины Николаевой. Бесплатный 30-минутный стратегический звонок.";
+  "поправь описание. Градиент на смысловом акценте оставь";
 
 
 export const Route = createFileRoute("/")({
