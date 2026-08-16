@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Zap } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS, CALL_TO_ACTION } from "./data";
 import { cn } from "@/lib/utils";
@@ -45,6 +46,14 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              to="/catalog"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            >
+              Каталог
+            </Link>
+          </li>
         </ul>
 
         <div className="flex items-center gap-3">
@@ -77,6 +86,15 @@ export function Navbar({ onBook }: { onBook: () => void }) {
                 </a>
               </li>
             ))}
+            <li>
+              <Link
+                to="/catalog"
+                onClick={() => setOpen(false)}
+                className="text-muted-foreground hover:text-foreground block rounded-lg px-3 py-2.5 text-sm font-medium"
+              >
+                Каталог
+              </Link>
+            </li>
           </ul>
           <Button
             variant="cta"
