@@ -202,7 +202,11 @@ function CatalogPage() {
         ) : null}
       </main>
 
-      <SiteFooter />
+      <SiteFooter
+        onBook={() => {
+          window.location.href = "/#strategy-call";
+        }}
+      />
     </div>
   );
 }
