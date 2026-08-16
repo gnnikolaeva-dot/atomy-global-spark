@@ -173,7 +173,7 @@ function CatalogPage() {
                       </p>
                       {p.pv ? (
                         <p className="text-muted-foreground text-[11px]">
-                          {p.pv} PV
+                          {p.pv.replace(",00", "")} PV
                         </p>
                       ) : null}
                     </div>
