@@ -16,6 +16,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useServerFn } from "@tanstack/react-start";
+import { submitBooking } from "@/lib/booking.functions";
 
 const SLOTS = ["09:00", "11:30", "14:00", "16:30", "19:00", "20:30"];
 
@@ -29,25 +31,45 @@ export function BookingModal({
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [slot, setSlot] = useState<string>(SLOTS[1]!);
   const [sending, setSending] = useState(false);
+  const send = useServerFn(submitBooking);
 
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    if (!name || !email || !date) {
-      toast.error("Укажите имя, email и удобную дату.");
+    const get = (k: string) => String(data.get(k) ?? "").trim();
+    const firstName = get("firstName");
+    const lastName = get("lastName");
+    const phone = get("phone");
+    if (!firstName || !lastName || !phone || !date) {
+      toast.error("Укажите имя, фамилию, телефон и удобную дату.");
       return;
     }
     setSending(true);
-    window.setTimeout(() => {
-      setSending(false);
+    try {
+      await send({
+        data: {
+          firstName,
+          lastName,
+          country: get("country"),
+          city: get("city"),
+          phone,
+          email: get("email"),
+          day: format(date, "EEEE, d MMMM yyyy", { locale: ru }),
+          time: slot,
+          goal: get("goal"),
+        },
+      });
       onOpenChange(false);
       toast.success(
-        `Заявка отправлена — ${format(date, "EEE, d MMM", { locale: ru })}, ${slot}. Команда Галины подтвердит время по email.`,
+        `Заявка отправлена — ${format(date, "EEE, d MMM", { locale: ru })}, ${slot}. Команда Галины подтвердит время.`,
       );
-    }, 900);
+    } catch {
+      toast.error("Не удалось отправить заявку. Попробуйте ещё раз.");
+    } finally {
+      setSending(false);
+    }
   };
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -101,9 +123,42 @@ export function BookingModal({
           </div>
 
           <div className="grid content-start gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-2">
+                <Label htmlFor="firstName">Имя</Label>
+                <Input id="firstName" name="firstName" maxLength={100} placeholder="Анна" required />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="lastName">Фамилия</Label>
+                <Input
+                  id="lastName"
+                  name="lastName"
+                  maxLength={100}
+                  placeholder="Смирнова"
+                  required
+                />
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-2">
+                <Label htmlFor="country">Страна</Label>
+                <Input id="country" name="country" maxLength={100} placeholder="Россия" />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="city">Город</Label>
+                <Input id="city" name="city" maxLength={100} placeholder="Москва" />
+              </div>
+            </div>
             <div className="grid gap-2">
-              <Label htmlFor="name">Имя и фамилия</Label>
-              <Input id="name" name="name" maxLength={100} placeholder="Анна Смирнова" required />
+              <Label htmlFor="phone">Телефон</Label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                maxLength={30}
+                placeholder="+7 900 123-45-67"
+                required
+              />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -113,13 +168,9 @@ export function BookingModal({
                 type="email"
                 maxLength={255}
                 placeholder="anna@company.com"
-                required
               />
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="country">Страна / город</Label>
-              <Input id="country" name="country" maxLength={100} placeholder="Москва, Россия" />
-            </div>
+
             <div className="grid gap-2">
               <Label htmlFor="goal">Ваша цель по доходу</Label>
               <Textarea
