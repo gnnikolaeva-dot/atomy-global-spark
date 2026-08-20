@@ -65,6 +65,11 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         </ul>
 
         <div className="flex items-center gap-3">
+          <Link to="/auth" className="hidden sm:inline-flex">
+            <Button variant="ghost" className="text-[13px] font-medium">
+              Вход
+            </Button>
+          </Link>
           <Button variant="cta" className="hidden sm:inline-flex" onClick={onBook}>
             {CALL_TO_ACTION}
           </Button>
@@ -113,16 +118,23 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               </Link>
             </li>
           </ul>
-          <Button
-            variant="cta"
-            className="mt-3 w-full"
-            onClick={() => {
-              setOpen(false);
-              onBook();
-            }}
-          >
-            {CALL_TO_ACTION}
-          </Button>
+          <div className="mt-3 flex flex-col gap-2">
+            <Link to="/auth" onClick={() => setOpen(false)}>
+              <Button variant="ghost" className="w-full">
+                Вход для партнеров
+              </Button>
+            </Link>
+            <Button
+              variant="cta"
+              className="w-full"
+              onClick={() => {
+                setOpen(false);
+                onBook();
+              }}
+            >
+              {CALL_TO_ACTION}
+            </Button>
+          </div>
         </div>
       )}
     </header>
