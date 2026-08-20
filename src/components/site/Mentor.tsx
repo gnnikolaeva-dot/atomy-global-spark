@@ -1,5 +1,6 @@
 import { ArrowRight, BadgeCheck, Crown, MessageSquareHeart, Route } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import mentor from "@/assets/mentor-galina.jpg";
 
 const FRAMEWORK = [
@@ -74,9 +75,16 @@ export function Mentor({ onBook }: { onBook: () => void }) {
             ))}
           </div>
 
-          <Button variant="cta" size="xl" className="mt-8" onClick={onBook}>
-            Поговорить с Галиной — 30 минут <ArrowRight />
-          </Button>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <Button variant="cta" size="xl" className="flex-1" onClick={onBook}>
+              Поговорить с Галиной — 30 минут <ArrowRight />
+            </Button>
+            <Link to="/about/mentor" className="flex-1">
+              <Button variant="outline" size="xl" className="w-full border-primary/20 hover:bg-primary/10">
+                О наставнике
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
