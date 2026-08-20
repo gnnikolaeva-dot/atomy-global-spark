@@ -44,14 +44,6 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               О компании
             </Link>
           </li>
-          <li>
-            <Link
-              to="/about/mentor"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            >
-              Обо мне
-            </Link>
-          </li>
           {NAV_LINKS.map((l) => (
             <li key={l.id}>
               <a
@@ -98,15 +90,6 @@ export function Navbar({ onBook }: { onBook: () => void }) {
                 className="text-muted-foreground hover:text-foreground block rounded-lg px-3 py-2.5 text-sm font-medium"
               >
                 О компании
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about/mentor"
-                onClick={() => setOpen(false)}
-                className="text-muted-foreground hover:text-foreground block rounded-lg px-3 py-2.5 text-sm font-medium"
-              >
-                Обо мне
               </Link>
             </li>
             {NAV_LINKS.map((l) => (

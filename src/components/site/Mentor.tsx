@@ -81,7 +81,7 @@ export function Mentor({ onBook }: { onBook: () => void }) {
             </Button>
             <Link to="/about/mentor" className="flex-1">
               <Button variant="outline" size="xl" className="w-full border-primary/20 hover:bg-primary/10">
-                О наставнике
+                Подробнее о Галине
               </Button>
             </Link>
           </div>
