@@ -59,15 +59,16 @@ export function Ecosystem() {
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (
-            <div
+            <Link
               key={s.value}
-              className="glass group hover:border-primary/50 rounded-2xl p-6 transition-colors border-white/5 bg-[#161e2e]/50"
+              to="/about/company"
+              className="glass group hover:border-primary/50 block rounded-2xl p-6 transition-colors border-white/5 bg-[#161e2e]/50 cursor-pointer"
             >
               <s.icon className="text-primary size-6" />
               <div className="mt-5 text-3xl font-extrabold tracking-tight text-white">{s.value}</div>
               <div className="mt-1 text-sm font-semibold text-white/90">{s.label}</div>
               <p className="text-muted-foreground mt-3 text-xs leading-relaxed">{s.copy}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
