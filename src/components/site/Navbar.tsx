@@ -35,11 +35,11 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           </span>
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-5 xl:gap-8 lg:flex">
           <li>
             <Link
               to="/about/company"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              className="text-muted-foreground hover:text-foreground text-[13px] xl:text-sm font-medium transition-colors whitespace-nowrap"
             >
               О компании
             </Link>
@@ -48,7 +48,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <li key={l.id}>
               <a
                 href={`/#${l.id}`}
-                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                className="text-muted-foreground hover:text-foreground text-[13px] xl:text-sm font-medium transition-colors whitespace-nowrap"
               >
                 {l.label}
               </a>
@@ -57,7 +57,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           <li>
             <Link
               to="/catalog"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              className="text-muted-foreground hover:text-foreground text-[13px] xl:text-sm font-medium transition-colors whitespace-nowrap"
             >
               Каталог
             </Link>
