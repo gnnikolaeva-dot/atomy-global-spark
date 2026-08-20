@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CatalogRouteImport } from './routes/catalog'
+import { Route as AboutCompanyRouteImport } from './routes/about/company'
+import { Route as AboutMentorRouteImport } from './routes/about/mentor'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +24,49 @@ const CatalogRoute = CatalogRouteImport.update({
   path: '/catalog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutCompanyRoute = AboutCompanyRouteImport.update({
+  id: '/about/company',
+  path: '/about/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutMentorRoute = AboutMentorRouteImport.update({
+  id: '/about/mentor',
+  path: '/about/mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/catalog': typeof CatalogRoute
+  '/about/company': typeof AboutCompanyRoute
+  '/about/mentor': typeof AboutMentorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/catalog': typeof CatalogRoute
+  '/about/company': typeof AboutCompanyRoute
+  '/about/mentor': typeof AboutMentorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/catalog': typeof CatalogRoute
+  '/about/company': typeof AboutCompanyRoute
+  '/about/mentor': typeof AboutMentorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/catalog'
+  fullPaths: '/' | '/catalog' | '/about/company' | '/about/mentor'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/catalog'
-  id: '__root__' | '/' | '/catalog'
+  to: '/' | '/catalog' | '/about/company' | '/about/mentor'
+  id: '__root__' | '/' | '/catalog' | '/about/company' | '/about/mentor'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CatalogRoute: typeof CatalogRoute
+  AboutCompanyRoute: typeof AboutCompanyRoute
+  AboutMentorRoute: typeof AboutMentorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CatalogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/company': {
+      id: '/about/company'
+      path: '/about/company'
+      fullPath: '/about/company'
+      preLoaderRoute: typeof AboutCompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/mentor': {
+      id: '/about/mentor'
+      path: '/about/mentor'
+      fullPath: '/about/mentor'
+      preLoaderRoute: typeof AboutMentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CatalogRoute: CatalogRoute,
+  AboutCompanyRoute: AboutCompanyRoute,
+  AboutMentorRoute: AboutMentorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

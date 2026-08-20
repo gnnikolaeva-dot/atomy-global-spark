@@ -36,10 +36,26 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
+          <li>
+            <Link
+              to="/about/company"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            >
+              О компании
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about/mentor"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            >
+              Обо мне
+            </Link>
+          </li>
           {NAV_LINKS.map((l) => (
             <li key={l.id}>
               <a
-                href={`#${l.id}`}
+                href={`/#${l.id}`}
                 className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
               >
                 {l.label}
@@ -75,10 +91,28 @@ export function Navbar({ onBook }: { onBook: () => void }) {
       {open && (
         <div className="glass animate-fade-in border-t px-5 pt-2 pb-6 lg:hidden">
           <ul className="grid gap-1">
+            <li>
+              <Link
+                to="/about/company"
+                onClick={() => setOpen(false)}
+                className="text-muted-foreground hover:text-foreground block rounded-lg px-3 py-2.5 text-sm font-medium"
+              >
+                О компании
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about/mentor"
+                onClick={() => setOpen(false)}
+                className="text-muted-foreground hover:text-foreground block rounded-lg px-3 py-2.5 text-sm font-medium"
+              >
+                Обо мне
+              </Link>
+            </li>
             {NAV_LINKS.map((l) => (
               <li key={l.id}>
                 <a
-                  href={`#${l.id}`}
+                  href={`/#${l.id}`}
                   onClick={() => setOpen(false)}
                   className="text-muted-foreground hover:text-foreground block rounded-lg px-3 py-2.5 text-sm font-medium"
                 >
