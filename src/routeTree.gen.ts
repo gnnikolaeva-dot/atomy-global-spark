@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as CatalogRouteImport } from './routes/catalog'
 import { Route as AboutCompanyRouteImport } from './routes/about/company'
 import { Route as AboutMentorRouteImport } from './routes/about/mentor'
+import { Route as AuthIndexRouteImport } from './routes/auth/index'
+import { Route as AuthenticatedPlatformIndexRouteImport } from './routes/_authenticated/platform/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CatalogRoute = CatalogRouteImport.update({
@@ -34,39 +41,79 @@ const AboutMentorRoute = AboutMentorRouteImport.update({
   path: '/about/mentor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthIndexRoute = AuthIndexRouteImport.update({
+  id: '/auth/',
+  path: '/auth/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedPlatformIndexRoute =
+  AuthenticatedPlatformIndexRouteImport.update({
+    id: '/platform/',
+    path: '/platform/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/catalog': typeof CatalogRoute
   '/about/company': typeof AboutCompanyRoute
   '/about/mentor': typeof AboutMentorRoute
+  '/auth/': typeof AuthIndexRoute
+  '/platform/': typeof AuthenticatedPlatformIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/catalog': typeof CatalogRoute
   '/about/company': typeof AboutCompanyRoute
   '/about/mentor': typeof AboutMentorRoute
+  '/auth': typeof AuthIndexRoute
+  '/platform': typeof AuthenticatedPlatformIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/catalog': typeof CatalogRoute
   '/about/company': typeof AboutCompanyRoute
   '/about/mentor': typeof AboutMentorRoute
+  '/auth/': typeof AuthIndexRoute
+  '/_authenticated/platform/': typeof AuthenticatedPlatformIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/catalog' | '/about/company' | '/about/mentor'
+  fullPaths:
+    | '/'
+    | '/catalog'
+    | '/about/company'
+    | '/about/mentor'
+    | '/auth/'
+    | '/platform/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/catalog' | '/about/company' | '/about/mentor'
-  id: '__root__' | '/' | '/catalog' | '/about/company' | '/about/mentor'
+  to:
+    | '/'
+    | '/catalog'
+    | '/about/company'
+    | '/about/mentor'
+    | '/auth'
+    | '/platform'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/catalog'
+    | '/about/company'
+    | '/about/mentor'
+    | '/auth/'
+    | '/_authenticated/platform/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   CatalogRoute: typeof CatalogRoute
   AboutCompanyRoute: typeof AboutCompanyRoute
   AboutMentorRoute: typeof AboutMentorRoute
+  AuthIndexRoute: typeof AuthIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +123,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/catalog': {
@@ -99,14 +153,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutMentorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/': {
+      id: '/auth/'
+      path: '/auth'
+      fullPath: '/auth/'
+      preLoaderRoute: typeof AuthIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/platform/': {
+      id: '/_authenticated/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof AuthenticatedPlatformIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedPlatformIndexRoute: typeof AuthenticatedPlatformIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedPlatformIndexRoute: AuthenticatedPlatformIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   CatalogRoute: CatalogRoute,
   AboutCompanyRoute: AboutCompanyRoute,
   AboutMentorRoute: AboutMentorRoute,
+  AuthIndexRoute: AuthIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
