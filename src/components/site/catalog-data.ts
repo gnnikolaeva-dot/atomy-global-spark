@@ -10,7 +10,7 @@ export type CatalogProduct = {
   description: string;
   group: string;
   tag: string;
-  koreaOrder: boolean;
+  location?: "korea" | "japan" | "russia" | "usa";
 };
 
 export const CATALOG_GROUPS = [
