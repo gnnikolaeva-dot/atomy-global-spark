@@ -4,7 +4,7 @@ import { getRequest } from "@tanstack/react-start/server";
 import { bookingSchema } from "./booking-schema";
 
 export const submitBooking = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => bookingSchema.parse(data))
+  .validator((data: unknown) => bookingSchema.parse(data))
   .handler(async ({ data }) => {
     const authHeader = getRequest().headers.get("authorization");
     const accessToken = authHeader?.toLowerCase().startsWith("bearer ")
