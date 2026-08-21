@@ -12,7 +12,7 @@ import { BookingModal } from "@/components/site/BookingModal";
 
 const TITLE = "Atomy Global Engine — доход 91 000 ₽ в месяц";
 const DESCRIPTION =
-  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Настройте role-based access control для админского раздела (просмотр/изменение заявок) с безопасной авторизацией.\n\nДобавьте админский раздел для просмотра заявок на Strategy Call с фильтрами (дата, статус, источник) и управлением статусом в таблице.\n\nРеализуйте назначение менеджера для каждой заявки и отображение текущего ответственного в интерфейсе админа.";
+  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Реализую отправку email-уведомлений пользователю и администратору при создании заявки, смене статуса и назначении менеджера.";
 
 
 export const Route = createFileRoute("/")({
