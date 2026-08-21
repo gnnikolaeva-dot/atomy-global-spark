@@ -12,7 +12,7 @@ import { BookingModal } from "@/components/site/BookingModal";
 
 const TITLE = "Atomy Global Engine — доход 91 000 ₽ в месяц";
 const DESCRIPTION =
-  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n\n\nДобавь к карточке товара в разделе catalog, а-а-а, соответственно плашки, э-э-э, которых будет понятно, откуда заказывается товар: из Японии, из Кореи, в России или из Америки.";
+  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n\n\nСмотри, нам теперь нужно подключить, э-э-э, базу данных Supabase";
 
 
 export const Route = createFileRoute("/")({
