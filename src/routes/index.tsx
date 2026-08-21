@@ -12,7 +12,7 @@ import { BookingModal } from "@/components/site/BookingModal";
 
 const TITLE = "Atomy Global Engine — доход 91 000 ₽ в месяц";
 const DESCRIPTION =
-  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            I have approved the plan";
+  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Enable Supabase for this project.";
 
 
 export const Route = createFileRoute("/")({
