@@ -148,11 +148,26 @@ function CatalogPage() {
                       className="size-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : null}
-                  {p.koreaOrder ? (
-                    <span className="glass absolute top-3 left-3 rounded-full px-2.5 py-1 text-[11px] font-semibold">
-                      Заказ из Кореи
+                  {p.location === "korea" && (
+                    <span className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 absolute top-3 left-3 rounded-full border px-2.5 py-1 text-[11px] font-semibold backdrop-blur-md">
+                      Корея
                     </span>
-                  ) : null}
+                  )}
+                  {p.location === "japan" && (
+                    <span className="bg-rose-500/10 text-rose-500 border-rose-500/20 absolute top-3 left-3 rounded-full border px-2.5 py-1 text-[11px] font-semibold backdrop-blur-md">
+                      Япония
+                    </span>
+                  )}
+                  {p.location === "usa" && (
+                    <span className="bg-blue-500/10 text-blue-500 border-blue-500/20 absolute top-3 left-3 rounded-full border px-2.5 py-1 text-[11px] font-semibold backdrop-blur-md">
+                      США
+                    </span>
+                  )}
+                  {p.location === "russia" && (
+                    <span className="bg-primary/10 text-primary border-primary/20 absolute top-3 left-3 rounded-full border px-2.5 py-1 text-[11px] font-semibold backdrop-blur-md">
+                      Россия
+                    </span>
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col gap-3 p-5">
