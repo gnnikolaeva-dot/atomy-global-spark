@@ -12,7 +12,7 @@ import { BookingModal } from "@/components/site/BookingModal";
 
 const TITLE = "Atomy Global Engine — доход 91 000 ₽ в месяц";
 const DESCRIPTION =
-  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Создай начальные таблицы для регистраций и заявок на 30-Min Strategy Video Call со связями и индексами.";
+  "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            Так, Superbase я подключил. Так что давай теперь будем настраивать ее";
 
 
 export const Route = createFileRoute("/")({
