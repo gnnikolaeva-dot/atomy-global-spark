@@ -2,7 +2,7 @@ import type { BookingInput } from "./booking-schema";
 
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_sheets/v4";
 const SPREADSHEET_ID = "1eNDWek686SX1e6w_PxPwDeE8Yd3_Yix8x42Mi4eYj60";
-const SHEET_RANGE = "'Заявки с сайта'!A:J";
+const SHEET_RANGE = "'Заявки с сайта'!A:L";
 
 export async function appendBookingRow(data: BookingInput): Promise<void> {
   const lovableKey = process.env["LOVABLE_API_KEY"];
@@ -23,6 +23,8 @@ export async function appendBookingRow(data: BookingInput): Promise<void> {
     data.day,
     data.time,
     data.goal,
+    data.personalDataConsent ? "Да" : "Нет",
+    new Date().toISOString(),
   ];
 
   const response = await fetch(

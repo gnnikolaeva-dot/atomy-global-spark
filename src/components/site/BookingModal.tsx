@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { CalendarCheck, Clock, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -40,8 +41,13 @@ export function BookingModal({
     const firstName = get("firstName");
     const lastName = get("lastName");
     const phone = get("phone");
+    const personalDataConsent = data.get("personalDataConsent") === "on";
     if (!firstName || !lastName || !phone || !date) {
       toast.error("Укажите имя, фамилию, телефон и удобную дату.");
+      return;
+    }
+    if (!personalDataConsent) {
+      toast.error("Подтвердите согласие на обработку персональных данных.");
       return;
     }
     setSending(true);
@@ -57,6 +63,7 @@ export function BookingModal({
           day: format(date, "EEEE, d MMMM yyyy", { locale: ru }),
           time: slot,
           goal: get("goal"),
+          personalDataConsent,
         },
       });
       onOpenChange(false);
@@ -69,7 +76,6 @@ export function BookingModal({
       setSending(false);
     }
   };
-
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -85,9 +91,7 @@ export function BookingModal({
 
         <form onSubmit={submit} className="mt-2 grid gap-6 md:grid-cols-2">
           <div>
-            <Label className="text-xs font-bold tracking-wider uppercase">
-              Выберите дату
-            </Label>
+            <Label className="text-xs font-bold tracking-wider uppercase">Выберите дату</Label>
             <div className="bg-surface/70 mt-3 rounded-2xl border p-1">
               <Calendar
                 mode="single"
@@ -99,9 +103,7 @@ export function BookingModal({
               />
             </div>
             <div className="mt-4">
-              <Label className="text-xs font-bold tracking-wider uppercase">
-                Свободное время
-              </Label>
+              <Label className="text-xs font-bold tracking-wider uppercase">Свободное время</Label>
               <div className="mt-3 grid grid-cols-3 gap-2">
                 {SLOTS.map((s) => (
                   <button
@@ -126,7 +128,13 @@ export function BookingModal({
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="grid gap-2">
                 <Label htmlFor="firstName">Имя</Label>
-                <Input id="firstName" name="firstName" maxLength={100} placeholder="Анна" required />
+                <Input
+                  id="firstName"
+                  name="firstName"
+                  maxLength={100}
+                  placeholder="Анна"
+                  required
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="lastName">Фамилия</Label>
@@ -181,6 +189,22 @@ export function BookingModal({
                 placeholder="Хочу 90 000 ₽ остаточного дохода за 6 месяцев, не оставляя работу."
               />
             </div>
+
+            <label className="text-muted-foreground flex items-start gap-3 text-xs leading-relaxed">
+              <input
+                type="checkbox"
+                name="personalDataConsent"
+                required
+                className="accent-primary mt-1 size-4 shrink-0"
+              />
+              <span>
+                Я согласен(а) на обработку персональных данных и принимаю условия{" "}
+                <Link to="/privacy" className="text-primary underline underline-offset-2">
+                  политики обработки данных
+                </Link>
+                .
+              </span>
+            </label>
 
             <div className="bg-surface-2/60 flex items-center gap-3 rounded-xl border p-3">
               <CalendarCheck className="text-emerald size-5 shrink-0" />
