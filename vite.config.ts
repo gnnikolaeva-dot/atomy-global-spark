@@ -7,6 +7,19 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // TanStack Start imports these modules from its generated client entry. Keeping
+  // them out of Vite's dep optimizer prevents stale virtual chunks from breaking
+  // the preview's dynamic client import after a config/HMR restart.
+  vite: {
+    optimizeDeps: {
+      exclude: [
+        "@tanstack/router-core",
+        "@tanstack/router-core/isServer",
+        "@tanstack/router-core/ssr/client",
+        "seroval",
+      ],
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
