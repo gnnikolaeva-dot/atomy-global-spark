@@ -13,6 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CatalogRouteImport } from './routes/catalog'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as PersonalDataConsentRouteImport } from './routes/personal-data-consent'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedPlatformRouteImport } from './routes/_authenticated/platform'
 import { Route as AboutCompanyRouteImport } from './routes/about/company'
 import { Route as AboutMentorRouteImport } from './routes/about/mentor'
@@ -36,6 +40,26 @@ const CatalogRoute = CatalogRouteImport.update({
   path: '/catalog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonalDataConsentRoute = PersonalDataConsentRouteImport.update({
+  id: '/personal-data-consent',
+  path: '/personal-data-consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedPlatformRoute = AuthenticatedPlatformRouteImport.update({
   id: '/platform',
   path: '/platform',
@@ -56,6 +80,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/catalog': typeof CatalogRoute
+  '/cookies': typeof CookiesRoute
+  '/personal-data-consent': typeof PersonalDataConsentRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/platform': typeof AuthenticatedPlatformRoute
   '/about/company': typeof AboutCompanyRoute
   '/about/mentor': typeof AboutMentorRoute
@@ -64,6 +92,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/catalog': typeof CatalogRoute
+  '/cookies': typeof CookiesRoute
+  '/personal-data-consent': typeof PersonalDataConsentRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/platform': typeof AuthenticatedPlatformRoute
   '/about/company': typeof AboutCompanyRoute
   '/about/mentor': typeof AboutMentorRoute
@@ -74,6 +106,10 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/catalog': typeof CatalogRoute
+  '/cookies': typeof CookiesRoute
+  '/personal-data-consent': typeof PersonalDataConsentRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/_authenticated/platform': typeof AuthenticatedPlatformRoute
   '/about/company': typeof AboutCompanyRoute
   '/about/mentor': typeof AboutMentorRoute
@@ -84,6 +120,10 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/catalog'
+    | '/cookies'
+    | '/personal-data-consent'
+    | '/privacy'
+    | '/terms'
     | '/platform'
     | '/about/company'
     | '/about/mentor'
@@ -92,6 +132,10 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/catalog'
+    | '/cookies'
+    | '/personal-data-consent'
+    | '/privacy'
+    | '/terms'
     | '/platform'
     | '/about/company'
     | '/about/mentor'
@@ -101,6 +145,10 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/catalog'
+    | '/cookies'
+    | '/personal-data-consent'
+    | '/privacy'
+    | '/terms'
     | '/_authenticated/platform'
     | '/about/company'
     | '/about/mentor'
@@ -111,6 +159,10 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   CatalogRoute: typeof CatalogRoute
+  CookiesRoute: typeof CookiesRoute
+  PersonalDataConsentRoute: typeof PersonalDataConsentRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   AboutCompanyRoute: typeof AboutCompanyRoute
   AboutMentorRoute: typeof AboutMentorRoute
 }
@@ -143,6 +195,34 @@ declare module '@tanstack/react-router' {
       path: '/catalog'
       fullPath: '/catalog'
       preLoaderRoute: typeof CatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/personal-data-consent': {
+      id: '/personal-data-consent'
+      path: '/personal-data-consent'
+      fullPath: '/personal-data-consent'
+      preLoaderRoute: typeof PersonalDataConsentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/platform': {
@@ -185,6 +265,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   CatalogRoute: CatalogRoute,
+  CookiesRoute: CookiesRoute,
+  PersonalDataConsentRoute: PersonalDataConsentRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   AboutCompanyRoute: AboutCompanyRoute,
   AboutMentorRoute: AboutMentorRoute,
 }

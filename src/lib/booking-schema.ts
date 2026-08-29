@@ -10,6 +10,9 @@ export const bookingSchema = z.object({
   day: z.string().trim().min(1).max(100),
   time: z.string().trim().min(1).max(20),
   goal: z.string().trim().max(600).default(""),
+  personalDataConsent: z.literal(true, {
+    errorMap: () => ({ message: "Необходимо согласиться с обработкой персональных данных" }),
+  }),
 });
 
 export type BookingInput = z.infer<typeof bookingSchema>;

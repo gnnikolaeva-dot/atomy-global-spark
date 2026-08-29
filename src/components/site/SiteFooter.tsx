@@ -17,8 +17,8 @@ export function SiteFooter({ onBook }: { onBook: () => void }) {
               </span>
             </div>
             <p className="text-muted-foreground mt-4 max-w-xs text-xs leading-relaxed">
-              Независимая партнёрская платформа на базе экосистемы Atomy.
-              Наставничество и система дупликации — Галина Николаева.
+              Независимая партнёрская платформа на базе экосистемы Atomy. Наставничество и система
+              дупликации — Галина Николаева.
             </p>
           </div>
 
@@ -54,10 +54,24 @@ export function SiteFooter({ onBook }: { onBook: () => void }) {
           </div>
         </div>
 
-        <p className="text-muted-foreground mt-8 text-center text-xs">
-          © {new Date().getFullYear()} Atomy Global Engine. Примеры дохода
-          иллюстративны и не являются гарантией заработка.
-        </p>
+        <div className="text-muted-foreground mt-8 flex flex-wrap justify-center gap-x-4 gap-y-2 text-center text-xs">
+          <a href="/privacy" className="hover:text-primary transition-colors">
+            Политика обработки данных
+          </a>
+          <a href="/personal-data-consent" className="hover:text-primary transition-colors">
+            Согласие на обработку данных
+          </a>
+          <a href="/cookies" className="hover:text-primary transition-colors">
+            Политика cookie
+          </a>
+          <a href="/terms" className="hover:text-primary transition-colors">
+            Пользовательское соглашение
+          </a>
+          <span>
+            © {new Date().getFullYear()} Atomy Global Engine. Примеры дохода иллюстративны и не
+            являются гарантией заработка.
+          </span>
+        </div>
       </div>
     </footer>
   );
