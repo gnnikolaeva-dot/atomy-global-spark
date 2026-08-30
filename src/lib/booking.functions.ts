@@ -2,9 +2,10 @@ import { createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 
 import { bookingSchema } from "./booking-schema";
+import { saveBooking } from "./booking.server";
 
 export const submitBooking = createServerFn({ method: "POST" })
-  .validator((data: unknown) => bookingSchema.parse(data))
+  .validator((input: unknown) => bookingSchema.parse(input))
   .handler(async ({ data }) => {
     const authHeader = getRequest().headers.get("authorization");
     const accessToken = authHeader?.toLowerCase().startsWith("bearer ")
