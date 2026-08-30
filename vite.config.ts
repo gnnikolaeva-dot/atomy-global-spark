@@ -12,4 +12,16 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // TanStack Router's conditional SSR exports can leave stale optimized chunks
+    // in Vite's dep cache, causing the client entry to fail dynamic import.
+    optimizeDeps: {
+      exclude: [
+        "@tanstack/react-router",
+        "@tanstack/router-core",
+        "@tanstack/router-core/ssr/client",
+        "seroval",
+      ],
+    },
+  },
 });
