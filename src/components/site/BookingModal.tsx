@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 
 const YANDEX_FORM_URL =
-  "https://forms.yandex.ru/cloud/6a93cb44493639a36caa60d9?iframe=1";
+  "https://forms.yandex.ru/u/6a93d82f902902ac914603e5?iframe=1";
 
 export function BookingModal({
   open,
